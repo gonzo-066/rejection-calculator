@@ -31,15 +31,15 @@ function Tooltip({ text }: { text: string }) {
         onMouseLeave={() => setVisible(false)}
         onFocus={() => setVisible(true)}
         onBlur={() => setVisible(false)}
-        className="w-4 h-4 rounded-full bg-gray-300 text-gray-600 text-[10px] font-bold flex items-center justify-center hover:bg-gray-400 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-400"
+        className="w-4 h-4 rounded-full bg-graphite text-on-dark-muted text-[10px] font-bold flex items-center justify-center hover:bg-accent/20 hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent"
         aria-label="More information"
       >
         ?
       </button>
       {visible && (
-        <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-52 bg-gray-800 text-white text-xs rounded-lg px-3 py-2 shadow-lg z-10 leading-relaxed">
+        <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-52 bg-graphite border border-line-dark text-on-dark text-xs rounded-lg px-3 py-2 shadow-lg z-10 leading-relaxed">
           {text}
-          <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-800" />
+          <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-graphite" />
         </span>
       )}
     </span>
@@ -67,14 +67,14 @@ function InputField({
     <div className="flex flex-col gap-1.5">
       <label
         htmlFor={id}
-        className="text-sm font-semibold text-gray-700 flex items-center"
+        className="text-sm font-semibold text-on-dark flex items-center"
       >
         {label}
         {tooltip && <Tooltip text={tooltip} />}
       </label>
       <div className="relative">
         {prefix && (
-          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 font-medium text-sm pointer-events-none">
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-on-dark-muted font-mono font-medium text-sm pointer-events-none">
             {prefix}
           </span>
         )}
@@ -86,7 +86,7 @@ function InputField({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder ?? "0"}
-          className={`w-full border border-gray-200 rounded-xl bg-gray-50 py-2.5 text-gray-900 font-medium text-sm transition-all focus:outline-none focus:ring-2 focus:ring-[#0b0f1a] focus:border-transparent hover:border-gray-300 ${prefix ? "pl-8 pr-4" : "px-4"}`}
+          className={`input w-full py-2.5 font-mono font-medium text-sm transition-all hover:border-accent/60 ${prefix ? "pl-8 pr-4" : "px-4"}`}
         />
       </div>
     </div>
@@ -107,24 +107,24 @@ const RISK_CONFIG: Record<
 > = {
   HIGH: {
     label: "HIGH RISK",
-    bg: "bg-red-50",
-    text: "text-red-700",
-    border: "border-red-200",
-    dot: "bg-red-500",
+    bg: "bg-danger/12",
+    text: "text-danger",
+    border: "border-danger/35",
+    dot: "bg-danger",
   },
   MEDIUM: {
     label: "MEDIUM RISK",
-    bg: "bg-yellow-50",
-    text: "text-yellow-700",
-    border: "border-yellow-200",
-    dot: "bg-yellow-500",
+    bg: "bg-warning/12",
+    text: "text-warning",
+    border: "border-warning/35",
+    dot: "bg-warning",
   },
   LOW: {
     label: "LOW RISK",
-    bg: "bg-green-50",
-    text: "text-green-700",
-    border: "border-green-200",
-    dot: "bg-green-500",
+    bg: "bg-success/12",
+    text: "text-success",
+    border: "border-success/35",
+    dot: "bg-success",
   },
 };
 
@@ -207,59 +207,39 @@ Start your 15-day pilot: axarat.com/#contact
     parseFloat(disposalCost) > 0;
 
   return (
-    <div
-      className="min-h-screen flex flex-col"
-      style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" }}
-    >
+    <div className="min-h-screen flex flex-col">
       {/* Top bar */}
-      <div className="w-full py-2 px-6" style={{ backgroundColor: "#0b0f1a" }}>
+      <div className="w-full py-2 px-6 bg-hero border-b border-line-dark">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img src="/logo.png" alt="Axarat" style={{ height: "48px", width: "auto" }} />
-            <span
-              className="text-2xl tracking-widest"
-              style={{ color: "#00e5c8", fontWeight: 800 }}
-            >
+            <span className="text-2xl tracking-widest font-heading font-extrabold text-accent-gradient">
               AXARAT
             </span>
           </div>
-          <span className="text-white/60 text-xs hidden sm:block">
+          <span className="text-on-dark-muted text-xs hidden sm:block">
             Fresh Produce Intelligence
           </span>
         </div>
       </div>
 
       {/* Hero */}
-      <div
-        className="w-full py-6 px-6"
-        style={{
-          background:
-            "linear-gradient(135deg, #0b0f1a 0%, #0d1220 60%, #0b0f1a 100%)",
-        }}
-      >
+      <div className="w-full py-6 px-6 bg-hero">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
-            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-3 py-1 mb-3">
-              <span className="w-2 h-2 rounded-full bg-[#00e5c8] animate-pulse" />
-              <span className="text-white/90 text-xs font-semibold tracking-wide uppercase">
+            <div className="inline-flex items-center gap-2 bg-white/5 border border-line-dark rounded-full px-3 py-1 mb-3">
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+              <span className="text-on-dark text-xs font-semibold tracking-wide uppercase">
                 Free Calculator Tool
               </span>
             </div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-white leading-tight mb-2">
+            <h1 className="text-3xl sm:text-4xl font-bold text-on-dark leading-tight mb-2">
               How Much Did Your Last Rejection{" "}
-              <span
-                style={{
-                  color: "#00e5c8",
-                  textDecoration: "underline",
-                  textDecorationColor: "#00e5c8",
-                  textDecorationThickness: "3px",
-                  textUnderlineOffset: "4px",
-                }}
-              >
+              <span className="text-accent underline decoration-accent decoration-[3px] underline-offset-4">
                 Really Cost?
               </span>
             </h1>
-            <p className="text-white/80 text-base max-w-xl">
+            <p className="text-on-dark-muted text-base max-w-xl">
               Enter your numbers below to see your true loss — and what it&apos;s
               costing you every year.
             </p>
@@ -268,17 +248,14 @@ Start your 15-day pilot: axarat.com/#contact
       </div>
 
       {/* Main content */}
-      <div className="flex-1 w-full bg-gray-50 px-4 py-5">
+      <div className="flex-1 w-full px-4 py-5">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-6">
           {/* Form card */}
-          <div className="lg:col-span-3 bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+          <div className="card lg:col-span-3 p-6">
             <div className="flex items-center gap-3 mb-5">
-              <div
-                className="w-8 h-8 rounded-lg flex items-center justify-center"
-                style={{ backgroundColor: "#0b0f1a" }}
-              >
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-accent/10 border border-accent/35">
                 <svg
-                  className="w-4 h-4 text-white"
+                  className="w-4 h-4 text-accent"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -292,10 +269,10 @@ Start your 15-day pilot: axarat.com/#contact
                 </svg>
               </div>
               <div>
-                <h2 className="font-bold text-gray-900 text-base">
+                <h2 className="font-bold text-on-dark text-base">
                   Rejection Details
                 </h2>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-on-dark-muted">
                   Enter figures from your last rejection
                 </p>
               </div>
@@ -339,7 +316,7 @@ Start your 15-day pilot: axarat.com/#contact
             <div className="mt-4">
               <label
                 htmlFor="frequency"
-                className="text-sm font-semibold text-gray-700 block mb-1.5"
+                className="text-sm font-semibold text-on-dark block mb-1.5"
               >
                 How often does this happen per year?
               </label>
@@ -347,7 +324,7 @@ Start your 15-day pilot: axarat.com/#contact
                 id="frequency"
                 value={frequency}
                 onChange={(e) => setFrequency(Number(e.target.value))}
-                className="w-full border border-gray-200 rounded-xl bg-gray-50 px-4 py-2.5 text-gray-900 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-[#0b0f1a] focus:border-transparent hover:border-gray-300 transition-all cursor-pointer"
+                className="input w-full px-4 py-2.5 font-medium text-sm hover:border-accent/60 transition-all cursor-pointer"
               >
                 {FREQUENCY_OPTIONS.map((o) => (
                   <option key={o.value} value={o.value}>
@@ -360,13 +337,12 @@ Start your 15-day pilot: axarat.com/#contact
             <button
               onClick={handleCalculate}
               disabled={!hasAnyInput}
-              className="mt-5 w-full py-3 rounded-xl font-bold text-[#0b0f1a] text-base tracking-wide transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed hover:brightness-110 active:scale-[0.98] shadow-md"
-              style={{ backgroundColor: "#00e5c8" }}
+              className="btn-primary mt-5 w-full py-3 text-base tracking-wide transition-all duration-200 active:scale-[0.98] shadow-md"
             >
               Calculate My Loss →
             </button>
 
-            <p className="text-center text-xs text-gray-400 mt-2">
+            <p className="text-center text-xs text-on-dark-muted mt-2">
               No data is stored. All calculations happen in your browser.
             </p>
           </div>
@@ -374,11 +350,8 @@ Start your 15-day pilot: axarat.com/#contact
           {/* Right panel */}
           <div className="lg:col-span-2 flex flex-col gap-4">
             {/* How it works */}
-            <div
-              className="rounded-2xl p-5 border border-cyan-100"
-              style={{ backgroundColor: "#ecfeff" }}
-            >
-              <h3 className="font-bold text-gray-800 text-sm mb-3">
+            <div className="card p-5">
+              <h3 className="font-bold text-on-dark text-sm mb-3">
                 What This Calculates
               </h3>
               <ul className="space-y-2">
@@ -409,10 +382,10 @@ Start your 15-day pilot: axarat.com/#contact
                       {item.icon}
                     </span>
                     <div>
-                      <span className="text-sm font-semibold text-gray-800">
+                      <span className="text-sm font-semibold text-on-dark">
                         {item.title}
                       </span>
-                      <p className="text-xs text-gray-500">{item.desc}</p>
+                      <p className="text-xs text-on-dark-muted">{item.desc}</p>
                     </div>
                   </li>
                 ))}
@@ -420,8 +393,8 @@ Start your 15-day pilot: axarat.com/#contact
             </div>
 
             {/* Trust badge */}
-            <div className="rounded-2xl p-5 bg-white border border-gray-100 shadow-sm">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">
+            <div className="card p-5">
+              <p className="text-xs font-semibold text-on-dark-muted uppercase tracking-widest mb-2">
                 Used By Buyers At
               </p>
               <div className="space-y-1.5">
@@ -432,8 +405,7 @@ Start your 15-day pilot: axarat.com/#contact
                 ].map((t) => (
                   <div key={t} className="flex items-center gap-2">
                     <svg
-                      className="w-3.5 h-3.5 flex-shrink-0"
-                      style={{ color: "#0b0f1a" }}
+                      className="w-3.5 h-3.5 flex-shrink-0 text-accent"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -443,24 +415,24 @@ Start your 15-day pilot: axarat.com/#contact
                         clipRule="evenodd"
                       />
                     </svg>
-                    <span className="text-xs text-gray-600">{t}</span>
+                    <span className="text-xs text-on-dark-muted">{t}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Sample numbers nudge */}
-            <div className="rounded-2xl p-4 bg-white border border-gray-100 shadow-sm">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5">
+            <div className="card p-4">
+              <p className="text-xs font-semibold text-on-dark-muted uppercase tracking-widest mb-1.5">
                 Quick Example
               </p>
-              <p className="text-xs text-gray-500 leading-relaxed">
+              <p className="text-xs text-on-dark-muted leading-relaxed">
                 500 boxes at $18 + $2,400 freight + $800 disposal ={" "}
-                <span className="font-semibold text-gray-700">
+                <span className="font-semibold text-on-dark">
                   $12,200 per incident
                 </span>
                 . At 4× per year that&apos;s{" "}
-                <span className="font-semibold" style={{ color: "#0b0f1a" }}>
+                <span className="font-semibold font-mono text-accent">
                   $48,800/yr
                 </span>{" "}
                 at risk.
@@ -477,61 +449,48 @@ Start your 15-day pilot: axarat.com/#contact
           >
             {/* Results header */}
             <div className="flex items-center gap-3 mb-6">
-              <div className="h-px flex-1 bg-gray-200" />
-              <span className="text-sm font-bold text-gray-400 uppercase tracking-widest px-2">
+              <div className="h-px flex-1 bg-line-dark" />
+              <span className="text-sm font-bold text-on-dark-muted uppercase tracking-widest px-2">
                 Your Rejection Impact Report
               </span>
-              <div className="h-px flex-1 bg-gray-200" />
+              <div className="h-px flex-1 bg-line-dark" />
             </div>
 
             {/* Metrics grid */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
               {/* Total Direct Loss */}
-              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 animate-fade-in-up-delay-1">
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">
+              <div className="card p-6 animate-fade-in-up-delay-1">
+                <p className="text-xs font-semibold text-on-dark-muted uppercase tracking-widest mb-1">
                   Total Direct Loss
                 </p>
-                <p className="text-3xl font-bold text-gray-900 mb-1">
+                <p className="text-3xl font-bold font-mono text-on-dark mb-1">
                   {formatCurrency(results.totalDirectLoss)}
                 </p>
-                <p className="text-xs text-gray-500">Per rejection incident</p>
+                <p className="text-xs text-on-dark-muted">Per rejection incident</p>
               </div>
 
               {/* Annualized Loss */}
-              <div
-                className="rounded-2xl p-6 animate-fade-in-up-delay-2"
-                style={{ backgroundColor: "#0b0f1a" }}
-              >
-                <p className="text-xs font-semibold text-white/60 uppercase tracking-widest mb-1">
+              <div className="card p-6 border-accent/35 animate-fade-in-up-delay-2">
+                <p className="text-xs font-semibold text-on-dark-muted uppercase tracking-widest mb-1">
                   Annualized Loss
                 </p>
-                <p className="text-3xl font-bold text-white mb-1">
+                <p className="text-3xl font-bold font-mono text-accent mb-1">
                   {formatCurrency(results.annualizedLoss)}
                 </p>
-                <p className="text-xs text-white/60">{frequency}× per year</p>
+                <p className="text-xs text-on-dark-muted">
+                  <span className="font-mono">{frequency}×</span> per year
+                </p>
               </div>
 
               {/* 50% Reduction */}
-              <div
-                className="rounded-2xl p-6 animate-fade-in-up-delay-3"
-                style={{
-                  backgroundColor: "#e6fcf9",
-                  border: "1px solid #99f0e4",
-                }}
-              >
-                <p
-                  className="text-xs font-semibold uppercase tracking-widest mb-1"
-                  style={{ color: "#0f766e" }}
-                >
+              <div className="rounded-xl p-6 border bg-success/12 border-success/35 animate-fade-in-up-delay-3">
+                <p className="text-xs font-semibold uppercase tracking-widest mb-1 text-success">
                   50% Reduction Saves
                 </p>
-                <p
-                  className="text-3xl font-bold mb-1"
-                  style={{ color: "#0d9488" }}
-                >
+                <p className="text-3xl font-bold font-mono mb-1 text-success">
                   {formatCurrency(results.savings50)}
                 </p>
-                <p className="text-xs" style={{ color: "#0f766e" }}>
+                <p className="text-xs text-success">
                   Per year back in your pocket
                 </p>
               </div>
@@ -539,7 +498,7 @@ Start your 15-day pilot: axarat.com/#contact
 
             {/* Risk Level Bar */}
             <div
-              className={`rounded-2xl p-5 border flex items-center gap-4 mb-4 animate-fade-in-up-delay-4 ${RISK_CONFIG[results.riskLevel].bg} ${RISK_CONFIG[results.riskLevel].border}`}
+              className={`rounded-xl p-5 border flex items-center gap-4 mb-4 animate-fade-in-up-delay-4 ${RISK_CONFIG[results.riskLevel].bg} ${RISK_CONFIG[results.riskLevel].border}`}
             >
               <div
                 className={`w-3 h-3 rounded-full flex-shrink-0 ${RISK_CONFIG[results.riskLevel].dot}`}
@@ -576,23 +535,17 @@ Start your 15-day pilot: axarat.com/#contact
             </div>
 
             {/* CTA Box */}
-            <div
-              className="rounded-2xl p-7 mb-5"
-              style={{
-                background:
-                  "linear-gradient(135deg, #0b0f1a 0%, #0d1220 100%)",
-              }}
-            >
+            <div className="card p-7 mb-5">
               <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                 <div className="flex-1">
-                  <p className="text-white font-bold text-base mb-1.5">
+                  <p className="text-on-dark font-bold text-base mb-1.5">
                     Want to prevent this?
                   </p>
-                  <p className="text-white/80 text-sm leading-relaxed">
+                  <p className="text-on-dark-muted text-sm leading-relaxed">
                     Axarat gives fresh produce importers real-time visibility
                     into their shipments, so problems show up before the
                     rejection does. Visit{" "}
-                    <span className="text-[#00e5c8] font-semibold">
+                    <span className="text-accent font-semibold">
                       axarat.com
                     </span>
                   </p>
@@ -601,8 +554,7 @@ Start your 15-day pilot: axarat.com/#contact
                   href="https://axarat.com/#contact"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-shrink-0 inline-block px-6 py-3 rounded-xl font-bold text-sm transition-all hover:brightness-110 active:scale-95 text-[#0b0f1a]"
-                  style={{ backgroundColor: "#00e5c8" }}
+                  className="btn-primary flex-shrink-0 inline-block px-6 py-3 text-sm transition-all active:scale-95"
                 >
                   Start your 15-day pilot →
                 </a>
@@ -610,28 +562,27 @@ Start your 15-day pilot: axarat.com/#contact
             </div>
 
             {/* Download Results */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+            <div className="card p-6">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h3 className="font-bold text-gray-800 text-sm">
+                  <h3 className="font-bold text-on-dark text-sm">
                     Download Results
                   </h3>
-                  <p className="text-xs text-gray-400 mt-0.5">
+                  <p className="text-xs text-on-dark-muted mt-0.5">
                     Copy a formatted summary to share with your team
                   </p>
                 </div>
                 <div className="flex gap-2">
                   <button
                     onClick={() => setShowDownload((p) => !p)}
-                    className="px-4 py-2 rounded-lg border border-gray-200 text-xs font-semibold text-gray-600 hover:bg-gray-50 transition-colors"
+                    className="btn-secondary px-4 py-2 text-xs font-semibold transition-colors"
                   >
                     {showDownload ? "Hide" : "Show Summary"}
                   </button>
                   {showDownload && (
                     <button
                       onClick={handleCopy}
-                      className="px-4 py-2 rounded-lg text-xs font-bold text-white transition-all hover:brightness-110"
-                      style={{ backgroundColor: "#0b0f1a" }}
+                      className={`btn-secondary px-4 py-2 text-xs font-bold transition-all ${copied ? "border-success text-success" : ""}`}
                     >
                       {copied ? "Copied ✓" : "Copy Text"}
                     </button>
@@ -643,7 +594,7 @@ Start your 15-day pilot: axarat.com/#contact
                   readOnly
                   value={summaryText}
                   rows={18}
-                  className="w-full font-mono text-xs bg-gray-50 border border-gray-200 rounded-xl p-4 text-gray-700 focus:outline-none resize-none"
+                  className="input w-full font-mono text-xs p-4 resize-none"
                 />
               )}
             </div>
@@ -652,21 +603,18 @@ Start your 15-day pilot: axarat.com/#contact
       </div>
 
       {/* Footer */}
-      <footer className="w-full py-5 px-6" style={{ backgroundColor: "#0b0f1a" }}>
+      <footer className="w-full py-5 px-6 bg-navy border-t border-line-dark">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <img src="/logo.png" alt="Axarat" style={{ height: "32px", width: "auto" }} />
-            <span
-              className="text-lg tracking-widest"
-              style={{ color: "#00e5c8", fontWeight: 800 }}
-            >
+            <span className="text-lg tracking-widest font-heading font-extrabold text-accent">
               AXARAT
             </span>
           </div>
-          <p className="text-xs text-white/60 text-center">
+          <p className="text-xs text-on-dark-muted text-center">
             Real-time visibility for fresh produce importers
           </p>
-          <p className="text-xs text-white/40">
+          <p className="text-xs text-on-dark-muted">
             © {new Date().getFullYear()} Axarat. All rights reserved.
           </p>
         </div>
