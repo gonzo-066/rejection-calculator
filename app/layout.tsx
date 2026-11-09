@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import IframeHeight from "./IframeHeight";
 
 export const metadata: Metadata = {
   title: "Rejection Cost Calculator | Axarat",
@@ -31,7 +32,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <IframeHeight />
+        {children}
+      </body>
     </html>
   );
 }

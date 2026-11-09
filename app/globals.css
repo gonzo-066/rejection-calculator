@@ -22,6 +22,15 @@ html {
   color-scheme: dark;
 }
 
+/* Embedded in an iframe (set by IframeHeight.tsx): the height follows the
+   content, not the iframe, or the reported height could never shrink. */
+html[data-embedded],
+html[data-embedded] body,
+html[data-embedded] .min-h-screen {
+  height: auto;
+  min-height: 0;
+}
+
 body {
   background: #0B1424;
   color: var(--color-on-dark);
