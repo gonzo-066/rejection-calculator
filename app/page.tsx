@@ -191,7 +191,7 @@ Want to prevent this? Axarat gives fresh produce
 importers real-time visibility into their
 shipments.
 
-Visit: axarat.com/#contact
+Start your 15-day pilot: axarat.com/#contact
 `
     : "";
 
@@ -215,6 +215,7 @@ Visit: axarat.com/#contact
       <div className="w-full py-2 px-6" style={{ backgroundColor: "#0b0f1a" }}>
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
+            <img src="/logo.png" alt="Axarat" style={{ height: "48px", width: "auto" }} />
             <span
               className="text-2xl tracking-widest"
               style={{ color: "#00e5c8", fontWeight: 800 }}
@@ -603,7 +604,7 @@ Visit: axarat.com/#contact
                   className="flex-shrink-0 inline-block px-6 py-3 rounded-xl font-bold text-sm transition-all hover:brightness-110 active:scale-95 text-[#0b0f1a]"
                   style={{ backgroundColor: "#00e5c8" }}
                 >
-                  See how Axarat prevents this →
+                  Start your 15-day pilot →
                 </a>
               </div>
             </div>
@@ -654,6 +655,7 @@ Visit: axarat.com/#contact
       <footer className="w-full py-5 px-6" style={{ backgroundColor: "#0b0f1a" }}>
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
+            <img src="/logo.png" alt="Axarat" style={{ height: "32px", width: "auto" }} />
             <span
               className="text-lg tracking-widest"
               style={{ color: "#00e5c8", fontWeight: 800 }}
