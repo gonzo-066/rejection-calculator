@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Rejection Cost Calculator | Premium Fields",
+  title: "Rejection Cost Calculator | Axarat",
   description:
-    "Calculate the true cost of your fresh fruit rejections and what they're costing you every year.",
+    "Calculate the true cost of your fresh fruit rejections — powered by Axarat",
   openGraph: {
-    title: "Rejection Cost Calculator | Premium Fields",
+    title: "Rejection Cost Calculator | Axarat",
     description:
-      "Calculate the true cost of your fresh fruit rejections and what they're costing you every year.",
+      "Calculate the true cost of your fresh fruit rejections — powered by Axarat",
   },
 };
 
